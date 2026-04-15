@@ -10,3 +10,4 @@ mT          = 5972000000000000000000000
 output      = output.out
 sampling    = 1 //frequency of data writing
 nsteps      = 10000
+idx = 1

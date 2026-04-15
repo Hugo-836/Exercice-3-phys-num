@@ -13,7 +13,7 @@ from scipy.special import ellipk
 # USER SETTINGS
 # ============================================================
 
-folder = r"/Users/pablitoooooo/Desktop/Physique Num/Exo 3/exercice-3/problème/Scan_nsteps_Trajectory_8.64e+04"
+folder = r"/Users/pablitoooooo/Desktop/Physique Num/Exo 3/Exercice-3-phys-num/problème/Scan_nsteps_Trajectory_8.64e+04"
 
 plot_layout = {
     "theta_time": True,

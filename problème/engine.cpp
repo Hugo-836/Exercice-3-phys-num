@@ -29,6 +29,7 @@ private:
   double dt;      // Intervalle de temps
 
   unsigned int sampling;  // Nombre de pas de temps entre chaque ecriture des diagnostics
+  unsigned int idx;
   int nsteps_per;
   unsigned int last;       // Nombre de pas de temps depuis la derniere ecriture des diagnostics
   ofstream *outputFile;    // Pointeur vers le fichier de sortie
@@ -66,13 +67,17 @@ private:
 
   void step()
   {
-    valarray <double> k1 = compute_f(vect);
-    valarray <double> k2 = compute_f(vect+0.5*k1);
-    valarray <double> k3 = compute_f(vect+0.5*k2);   
-    valarray <double> k4 = compute_f(vect+k3);
+    if (idx == 1) {
+      valarray <double> k1 = compute_f(vect);
+      valarray <double> k2 = compute_f(vect+0.5*k1);
+      valarray <double> k3 = compute_f(vect+0.5*k2);   
+      valarray <double> k4 = compute_f(vect+k3);
+      vect = vect + dt/6.0 * (k1 + 2*k2 + 2*k3 + k4);
+      t = t + dt;
+    } else {
 
-    vect = vect + dt/6.0 * (k1 + 2*k2 + 2*k3 + k4);
-    t = t + dt;
+    }
+  
   }
 
 
@@ -90,10 +95,12 @@ public:
       h     = configFile.get<double>("h", h);         // lire le rayon
       RT = configFile.get<double>("RT", RT); // lire le coefficient de frottement
       mT    = configFile.get<double>("mT", mT);    // lire la condition initiale en theta
-      vect = valarray<double>{r0,0,0,v0};
+      double vmax = sqrt(v0*v0+2*G*mT*(1/(RT+h) - 1/r0));
+      double vt = (h+RT)*vmax/r0;
+      vect = valarray<double>{r0,0,vt,(-1)*sqrt(v0*v0-vt*vt)};
       nsteps_per= configFile.get<int>("nsteps");        // number of time step per period
       sampling = configFile.get<unsigned int>("sampling",sampling); // lire le nombre de pas de temps entre chaque ecriture des diagnostics
-      
+      idx = configFile.get<unsigned int>("idx",idx);
       // Ouverture du fichier de sortie
       outputFile = new ofstream(configFile.get<string>("output").c_str());
       outputFile->precision(15);
