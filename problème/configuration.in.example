@@ -1,0 +1,12 @@
+tf          = 172800
+G           = 0.00000000006674
+mA          = 8500
+r0          = 314159000
+d           = 5.02
+v0          = 1200
+h           = 10000
+RT          = 6378100
+mT          = 5972000000000000000000000
+output      = output.out
+sampling    = 1 //frequency of data writing
+nsteps      = 10000
