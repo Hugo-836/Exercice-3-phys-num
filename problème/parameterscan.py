@@ -9,7 +9,7 @@ input_filename = 'configuration.in.example' # Strictly no longer needed, but we 
 
 
 input_parameters = {
-    'tf': 172800*14,
+    'tf': 172800,
     'G': 0.00000000006674,
     'mA': 8500,
     'r0': 314159000,
@@ -29,7 +29,7 @@ input_parameters = {
 
 paramstr = 'nsteps' # The parameter to scan, must be one of the keys in input_parameters
 
-variable_array = 172800/2**np.arange(6,10,1)  # Example values for the parameter scan
+variable_array = [2000, 4000, 8000, 16000]  # Example values for the parameter scan
 outstr = f"Trajectory_{input_parameters['nsteps']:.4g}"
 
 # -------------------------------------------------

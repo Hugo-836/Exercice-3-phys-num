@@ -97,7 +97,7 @@ public:
       mT    = configFile.get<double>("mT", mT);    // lire la condition initiale en theta
       double vmax = sqrt(v0*v0+2*G*mT*(1/(RT+h) - 1/r0));
       double vt = (h+RT)*vmax/r0;
-      vect = valarray<double>{r0,0,vt,(-1)*sqrt(v0*v0-vt*vt)};
+      vect = valarray<double>{r0,0,(-1)*sqrt(v0*v0-vt*vt),vt};
       nsteps_per= configFile.get<int>("nsteps");        // number of time step per period
       sampling = configFile.get<unsigned int>("sampling",sampling); // lire le nombre de pas de temps entre chaque ecriture des diagnostics
       idx = configFile.get<unsigned int>("idx",idx);
