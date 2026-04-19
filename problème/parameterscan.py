@@ -29,7 +29,7 @@ input_parameters = {
 
 paramstr = 'nsteps' # The parameter to scan, must be one of the keys in input_parameters
 
-variable_array = [2000, 4000, 8000, 16000]  # Example values for the parameter scan
+variable_array = [50, 100, 200, 400, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000]  # Example values for the parameter scan
 outstr = f"Trajectory_{input_parameters['nsteps']:.4g}"
 
 # -------------------------------------------------
