@@ -1,0 +1,26 @@
+% Section 3.2(c) — pas de temps adaptatif
+N        = 2
+G        = 6.674e-11
+tf       = 172800
+
+mass_1   = 5.972e24
+radius_1 = 6378100
+x_1 = 0.0   y_1 = 0.0   vx_1 = 0.0   vy_1 = 0.0
+
+mass_2   = 8500
+radius_2 = 2.51
+auto_init   = true
+r0_artemis  = 314159000
+v0_artemis  = 1200
+h_perigee   = 10000
+frame_correction = false
+
+adaptive = true
+dt0      = 10.0
+epsilon  = 1e-8
+dtMin    = 1e-3
+dtMax    = 3600.0
+sampling = 1
+
+drag     = false
+output   = output_adaptive.out

@@ -1,0 +1,36 @@
+% =============================================================================
+%  configuration_earth_moon.in  —  Section 3.4 : système Terre-Lune
+%  Orbite circulaire dans le référentiel barycentrique (COM à l'origine)
+%  Simulation sur 10 périodes orbitales
+% =============================================================================
+
+N        = 2
+G        = 6.674e-11
+tf       = 2.35748315e7
+
+% --- Terre (corps 1) ---
+mass_1   = 5.972e24
+radius_1 = 6378100
+x_1      = -4668434.62
+y_1      = 0.0
+vx_1     = 0.0
+vy_1     = -12.44235398
+
+% --- Lune (corps 2) ---
+mass_2   = 7.342e22
+radius_2 = 1737400
+x_2      = 379731565.38
+y_2      = 0.0
+vx_2     = 0.0
+vy_2     = 1012.06398739
+
+% --- Intégrateur adaptatif ---
+adaptive = true
+dt0      = 60.0
+epsilon  = 1e-10
+dtMin    = 1e-2
+dtMax    = 7200.0
+sampling = 100
+
+drag     = false
+output   = output_earth_moon.out

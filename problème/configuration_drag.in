@@ -1,0 +1,38 @@
+% =============================================================================
+%  configuration_drag.in  —  Section 3.3, avec atmosphère terrestre
+%  Conditions initiales = section 3.2(a) (auto_init)
+% =============================================================================
+
+N        = 2
+G        = 6.674e-11
+tf       = 172800
+
+mass_1   = 5.972e24
+radius_1 = 6378100
+x_1 = 0.0   y_1 = 0.0   vx_1 = 0.0   vy_1 = 0.0
+
+mass_2   = 8500
+radius_2 = 2.51
+auto_init   = true
+r0_artemis  = 314159000
+v0_artemis  = 1200
+h_perigee   = 10000
+frame_correction = false
+
+adaptive = true
+dt0      = 10.0
+epsilon  = 1e-8
+dtMin    = 1e-4
+dtMax    = 3600.0
+sampling = 1
+
+% --- Atmosphère terrestre ---
+drag       = true
+rho0       = 1.2        % kg/m³  densité au niveau de la mer
+lambda_atm = 7238.2     % m      épaisseur caractéristique
+S          = 19.7920    % m²     section transversale = pi*(5.02/2)^2
+Cx         = 0.3
+drag_body  = 2
+drag_center = 1
+
+output   = output_drag.out

@@ -1,13 +1,38 @@
-tf          = 172800
-G           = 0.00000000006674
-mA          = 8500
-r0          = 314159000
-d           = 5.02
-v0          = 1200
-h           = 10000
-RT          = 6378100
-mT          = 5972000000000000000000000
-output      = output.out
-sampling    = 1 //frequency of data writing
-nsteps      = 10000
-idx = 1
+% =============================================================================
+%  configuration.in.example  —  Section 3.2, pas de Lune, pas d'atmosphère
+%  N=2 : Terre (corps 1) + Artemis II (corps 2)
+% =============================================================================
+
+N        = 2
+G        = 6.674e-11
+tf       = 172800        % 2 jours [s]
+
+% --- Corps 1 : Terre ---
+mass_1   = 5.972e24      % kg
+radius_1 = 6378100       % m
+x_1      = 0.0
+y_1      = 0.0
+vx_1     = 0.0
+vy_1     = 0.0
+
+% --- Corps 2 : Artemis II ---
+mass_2   = 8500          % kg
+radius_2 = 2.51          % m  (demi-diamètre)
+
+% Calcul analytique des CI (auto_init = true)
+auto_init   = true
+r0_artemis  = 314159000  % m   distance initiale au centre de la Terre
+v0_artemis  = 1200       % m/s norme de la vitesse
+h_perigee   = 10000      % m   altitude minimale cible
+
+frame_correction = false
+
+% --- Intégration à pas fixe ---
+adaptive = false
+nsteps   = 16000
+sampling = 10
+
+% --- Traînée (désactivée) ---
+drag     = false
+
+output   = output.out
